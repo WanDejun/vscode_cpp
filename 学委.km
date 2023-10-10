@@ -1,0 +1,228 @@
+{
+    "root": {
+        "data": {
+            "id": "cvok5q0es7c0",
+            "created": 1695295667349,
+            "text": "MainTopic"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cvok620g9f40",
+                    "created": 1695295693473,
+                    "text": "经历",
+                    "priority": 1,
+                    "layout_mind_offset": {
+                        "x": 15.499998979270686,
+                        "y": -88.99999667704111
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cvok6xc4syw0",
+                            "created": 1695295761659,
+                            "text": "高中竞赛经历"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cvok9kvnt400",
+                                    "created": 1695295969634,
+                                    "text": "物理奥赛省三"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cvok71uvns80",
+                            "created": 1695295771500,
+                            "text": "高中任职情况"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cvok75a4kkg0",
+                                    "created": 1695295778952,
+                                    "text": "同时兼任物理和技术课代表"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cvok7dmpq1c0",
+                            "created": 1695295797128,
+                            "text": "高中自学经历"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cvok7h1zux40",
+                                    "created": 1695295804582,
+                                    "text": "高一 C语言，普通物理（力学）高二数据结构，c++，普通物理（电磁学），算法 自己摸索出了一点点自学方法。"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cvok69wzi0o0",
+                    "created": 1695295710677,
+                    "text": "管理方式",
+                    "priority": 2,
+                    "layout_mind_offset": {
+                        "x": -18.749999161809797,
+                        "y": -97.49999564141052
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cvok9s3w5z40",
+                            "created": 1695295985370,
+                            "text": "以服务为主"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cvok9vb6ko80",
+                                    "created": 1695295992341,
+                                    "text": "都是学院乃至学校的最高战力了，没啥好管的，都是成年人，自己管好自己"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cvokabz4nyg0",
+                            "created": 1695296028617,
+                            "text": "给大家力所能及的帮助"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cvokak58x9c0",
+                                    "created": 1695296046401,
+                                    "text": "给予解答"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cvokapr3oyo0",
+                                    "created": 1695296058607,
+                                    "text": "给予能获得答案的途径"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cvokbussnjs0",
+                                            "created": 1695296147957,
+                                            "text": "培养信息获取与提炼的能力"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cvokaxl46t40",
+                                            "created": 1695296075659,
+                                            "text": "如院长所言，计算机专业需要极强的自学能力，学科是发展的，人也要发展才能跟上时代。"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cvokc82zicw0",
+                                    "created": 1695296176872,
+                                    "text": "共赢"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cvokcb5yvig0",
+                                            "created": 1695296183582,
+                                            "text": "赠人玫瑰手留余香，给别人讲题也提升了自我，学习金字塔（讲能收获的最多，听只能留下很少）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cvokddmhons0",
+                                            "created": 1695296267299,
+                                            "text": "举例"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cvok6fs20kg0",
+                    "created": 1695295723440,
+                    "text": "目标",
+                    "priority": 3,
+                    "layout_mind_offset": {
+                        "x": 433.2499869205063,
+                        "y": 266.9999921172859
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cvokdk6437s0",
+                            "created": 1695296281546,
+                            "text": "对自己",
+                            "layout_right_offset": {
+                                "x": 241.24998921528504,
+                                "y": -18.749999161809512
+                            }
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cvokdnq4pxs0",
+                                    "created": 1695296289287,
+                                    "text": "接受大家监督，我自身也有许多不足，无论是学科上还是为人处事上，当班干部也为了大家对我严格要求",
+                                    "layout_right_offset": {
+                                        "x": 721.4999587610381,
+                                        "y": 1.2499999441205887
+                                    }
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cvokewo5bh40",
+                            "created": 1695296387122,
+                            "text": "对大家，发挥大家的主观能动性，在各自的细分领域有所建树，促进大家优势互补，团结协作，圆满度过我们本博班的学习与科研时光",
+                            "layout_right_offset": {
+                                "x": 911.249959263952,
+                                "y": 12.499999441206455
+                            }
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}

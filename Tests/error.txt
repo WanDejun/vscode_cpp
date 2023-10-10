@@ -1,0 +1,1 @@
+Command failed: "d:/code/vscode c++/Tests/a.exe" 1 < "d:/code/vscode c++/Tests/input_1.txt" > "d:/code/vscode c++/Tests/code_output_1.txt"
