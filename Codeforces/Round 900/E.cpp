@@ -17,36 +17,103 @@ bool flag[N];
 char str[N];
 bool f = 0;
 
-void solve() {
-    i64 n, k, q, t;
-    scanf("%lld%lld", &n, &k); getchar();
-    for (i64 i = 0 ; i < n; i++) {
-        str[i] = getchar();
-    } getchar();
-    for (i64 i = 0; i < n; i++) flag[i] = 0;
-    for (i64 i = 0; i < k; i++) scanf("%lld", L + i);
-    for (i64 i = 0; i < k; i++) scanf("%lld", R + i);
-    scanf("%lld", &q);
-    for (i64 i = 0; i < q; i++) {scanf("%lld", X + i); X[i]--; }
+class SegmentTree {
+public:
+    int n;
+    vector<i64> arr, tag;
+    SegmentTree() : n(0) {}
+    SegmentTree(int n_, i64 v_ = 0) { //n_个常数v_
+        init(n_, v_);
+    }
+    SegmentTree(vector<i64> init_) { //数组初始化
+        init(init_);
+    }
+    void init(i64 n_, i64 v_ = 0) {
+        init(vector<i64>(n_, v_));
+    }
+    void init(vector<i64> init_) {
+        n = init_.size();
+        arr = vector<i64> (n << 2);
+        tag = vector<i64> (n << 2);
+        function<void(int, int, int)> build = [&] (i64 p, i64 l, i64 r) {
+            if (l == r) {
+                arr[p] = init_[l];
+                return;
+            }
+            i64 m = (l + r) >> 1;
+            build(p << 1, l, m);
+            build(p << 1 | 1, m + 1, r);
+            pull(p);
+        };
+        build(1, 0, n - 1);
+    }
+    void pull(i64 p) { //down to up
+        arr[p] = arr[p << 1] & arr[p << 1 | 1];
+    }
+    void push(i64 p, i64 l, i64 r) {
+        i64 m = (l + r) >> 1;
+        arr[p << 1] += tag[p] * (m - l + 1);
+        tag[p << 1] += tag[p];
+        arr[p << 1 | 1] += tag[p] * (r - m);
+        tag[p << 1 | 1] += tag[p];
+        tag[p] = 0;
+    }
+    void update(i64 p, i64 l, i64 r, i64 x, i64 y, i64 n) {
+        if (l > y || r < x) return;
+        if (l >= x && r <= y) {
+            arr[p] += (r - l + 1) * n;
+            if (r != l) tag[p] += n;
+        }
+        else {
+            i64 m = (l + r) >> 1;
+            //push(p, l, r);
+            update(p << 1, l, m, x, y, n);
+            update(p << 1 | 1, m + 1, r, x, y, n);
+            pull(p);
+        }
+    }
+    void update(i64 l, i64 r, i64 n) {
+        update(1, 0, n - 1, l, r, n);
+    }
+    i64 query(i64 p, i64 l, i64 r, i64 x, i64 y) {
+        if (l > y || r < x) return LLONG_MAX;
+        if (l >= x && r <= y) return arr[p];
+        else {
+            i64 m = (l + r) >> 1;
+            push(p, l, r);
+            return query(p << 1, l, m, x, y) & query(p << 1 | 1, m + 1, r, x, y);
+        }
+    }
+    i64 query(i64 l, i64 r) {
+        return query(1, 0, n - 1, l, r);
+    }
+};
 
-    for (i64 i = 0; i < k; i++) {
-        L[i]--; R[i]--;
-        for (i64 j = L[i]; j <= R[i]; j++) col[j] = i;
+i64 bisearch(i64 k, i64 st, SegmentTree& T) {
+    i64 mid, val, l = st, r = T.n - 1;
+    while (l < r) {
+        mid = (l + r + 1) >> 1;
+        val = T.query(st, mid);
+        if (val >= k) l = mid;
+        else r = mid - 1;
     }
-    i64 l, r;
+    return l;
+}
+
+void solve() {
+    i64 n, q, t, l, r, k;
+    scanf("%lld", &n); getchar();
+    vector<i64> arr(n);
+    for (i64 i = 0 ; i < n; i++) {
+        scanf("%lld", &(arr[i]));
+    } getchar();
+    SegmentTree T(arr);
+    scanf("%lld", &q);
     for (i64 i = 0; i < q; i++) {
-        t = L[col[X[i]]] + R[col[X[i]]] - X[i];
-        l = min(X[i], t); r = max(X[i], t);
-        flag[l] ^= 1; flag[r] ^= 1;
-    }
-    for (i64 i = 0; i < k; i++) {
-        for (i64 j = L[i] + 1, k = R[i] - 1; j < k; j++, k--) {
-            flag[j] ^= flag[j - 1]; flag[k] ^= flag[k + 1];
-        }
-        for (i64 j = L[i]; j <= R[i]; j++) {
-            if (flag[j]) putchar(str[L[i] + R[i] - j]);
-            else putchar(str[j]);
-        }
+        scanf("%lld%lld", &l, &k);
+        l--;
+        if (k > arr[l]) printf("-1 ");
+        else printf("%lld ",bisearch(k, l, T) + 1);
     }
     putchar('\n');
 }
