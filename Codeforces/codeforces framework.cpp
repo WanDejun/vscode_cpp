@@ -1,18 +1,17 @@
 #include <bits/stdc++.h>
 
-#define PII pair<int, int>
-#define MII multimap<int, int>
-#define MSI multimap<string, int>
-#define SI multiset<int>
-#define VI vector<int>
+#define PII array<i64, 2>
+#define MII multimap<i64, i64>
+#define MSI multimap<string, i64>
+#define SI multiset<i64>
+#define VI vector<i64>
 #define i64 long long
-#define i32 long
 
 using namespace std;
 
-const i64 N = 1e5;
+const i64 N = 2e5;
 const i64 MOD = 998244353;
-bool a[N][N], b[N], c[N];
+bool a[N], b[N];
 
 void solve() {
     i64 n, m, t, ans = 0;
