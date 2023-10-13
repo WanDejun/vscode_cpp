@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
-#include <random>
+#include <stdlib.h>
+#include <stdbool.h>
 #include <time.h>
 
 #define N 20
