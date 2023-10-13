@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> //xi为i到其他顶点的总距离，求最小的xi的
 
 #define PII array<i64, 2>
 #define MII multimap<i64, i64>
@@ -16,8 +16,7 @@ struct Treenode {
     vector<i64> child;
 } Tree[N];
 bool tag[N];
-PII dis[N];
-i64 updis[N]; // down & up
+i64 cnt[N], sum[N];
 
 void top_down(i64 u) {
     for (i64 v : Tree[u].child) if (v != Tree[u].fa) {
@@ -26,36 +25,30 @@ void top_down(i64 u) {
     }
 }
 void botton_up(i64 u) {
+    cnt[u] = tag[u];
     for (i64 v : Tree[u].child) if (v != Tree[u].fa) {
         botton_up(v);
-        i64 d = dis[v][0] ? dis[v][0] + 1 : tag[v];
-        if (dis[u][0] < d) {
-            dis[u][1] = dis[u][0];
-            dis[u][0] = d;
-        }
-        else if (dis[u][1] < d) {
-            dis[u][1] = d;
-        }
+        cnt[u] += cnt[v];
+        sum[u] += sum[v] + cnt[v];
     }
 }
 void cal(i64 v) {
-    i64 u = Tree[v].fa, d = dis[v][0] ? dis[v][0] + 1 : tag[v];
-    updis[v] = dis[u][0] + 1;
-    if (d == dis[u][0]) updis[v] = dis[u][1] + 1;
-    if (updis[v] == 1) updis[v] = tag[u];
-    updis[v] = max(updis[v], (updis[u] ? updis[u] : -1) + 1);
-    for (i64 t : Tree[v].child) if (t != u) {
+    i64 u = Tree[v].fa;
+    i64 c = cnt[u] - cnt[v], s = sum[u] - (sum[v] + cnt[v]);
+    sum[v] += (c + s);
+    cnt[v] += c;
+    for (i64 t : Tree[v].child) if (t != Tree[v].fa) {
         cal(t);
     }
 }
 
 void solve() {
-    i64 n, k, t, mini = LLONG_MAX, u, v;
+    i64 n, k, t, ans = LLONG_MAX, u, v;
     Tree[0].fa = -1;
     scanf("%lld%lld", &n, &k); getchar();
     for (i64 i = 0; i < n; i++) {
         Tree[i].child.resize(0);
-        dis[i][0] = dis[i][1] = updis[i] = tag[i] = 0;
+        cnt[i] = sum[i] = tag[i] = 0;
     }
     
     for (i64 i = 0; i < k; i++) {
@@ -70,14 +63,13 @@ void solve() {
     }
     top_down(0);
     botton_up(0);
-    updis[0] = -1;
     for (i64 v : Tree[0].child) {
         cal(v);
     }
     for (i64 i = 0; i < n; i++) {
-        mini = min(mini, max(updis[i], dis[i][0]));
+        ans = min(ans, sum[i]);
     }
-	printf("%lld\n", mini);
+	printf("%lld\n", ans);
 }
 
 int main() {
