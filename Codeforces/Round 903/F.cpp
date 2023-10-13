@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const i64 N = 2e3 + 5;
+const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
 struct Treenode {
     i64 fa;
