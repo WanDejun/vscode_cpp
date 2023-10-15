@@ -9,13 +9,16 @@
 
 using namespace std;
 
-const i64 N = 2e5;
+const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
-bool a[N], b[N];
+i64 a[N], b[N];
 
 void solve() {
     i64 n, m, t, ans = 0;
     scanf("%lld", &n); getchar();
+	for (i64 i = 0; i < n; i++) {
+		
+	}
 	
 	printf("%lld\n", ans);
 }
