@@ -2,12 +2,10 @@
 
 #define i64 long long
 using namespace std;
-
+i64 a[] = {1, 2, 3};
 signed main() {
-	int a = -1;
-	unsigned int b = a;
-	unsigned c = UINT_MAX;
-	cout << a << " " << b << " " << c << endl;
+	int loc = find(a, a + 2, 2) - a;
+	cout << loc << endl;
 	system("pause");
 	return 0;
 }
