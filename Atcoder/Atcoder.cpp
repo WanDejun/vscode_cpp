@@ -8,7 +8,6 @@
 #define FI first
 #define SE second
 #define i64 long long
-#define i32 long
 
 using namespace std;
 
