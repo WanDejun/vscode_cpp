@@ -11,15 +11,25 @@
 
 using namespace std;
 
-const i64 N = 1e5 + 5;
+const i64 N = 1e3 + 5;
 const i64 MOD = 998244353;
-i64 a[N], b[N];
+i64 a[N];
 
 void solve() {
-    i64 n, ans;
+    i64 n, ans = 0;
     scanf("%lld", &n); getchar();
-
-    printf("%lld", ans);
+    for (i64 i = 1; i <= n; i++) {
+        scanf("%lld", a + i);
+        a[i] += a[i - 1];
+    }
+    for (i64 i = 1; i <= n; i++) {
+        for (i64 j = i + 1; j <= n; j++) {
+            for (i64 k = j + 1; k <= n; k++) {
+                ans = max(ans, a[i] & a[j] & a[k]);
+            }
+        }
+    }
+    cout << ans;
 }
 signed main() {
     solve();
