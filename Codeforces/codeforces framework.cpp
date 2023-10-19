@@ -24,7 +24,7 @@ void solve() {
 }
 
 int main() {
-	i64 _;
+	i64 _ = 1;
 	scanf("%lld", &_); getchar();
 	for (i64 __ = 0; __ < _; __++) {
 		solve();

@@ -11,22 +11,67 @@
 
 using namespace std;
 
-const i64 N = 1e5 + 5;
+const i64 N = 1e2 + 5;
 const i64 MOD = 998244353;
-i64  a[N];
+i64  a[N], b[N], c[N];
+
+bool cmp(i64* a1, i64* a2, i64 n) {
+    for (i64 i = 0; i < n; i++) {
+        if (a1[i] != a2[i]) return false;
+    }
+    return true;
+}
 
 void solve() {
     i64 n, p, ans = 0;
-    scanf("%lld%lld", &n, &p); getchar();
-    for (i64 i = 0; i < n; i++) {
-        scanf("%lld", a + i);
+    bool finish = 0;
+    scanf("%lld", &n); getchar();
+    for (i64 i = 0; i < n; i++) {scanf("%lld", a + i); c[i] = a[i];}
+    for (i64 i = 0; i < n; i++) scanf("%lld", b + i);
+
+    for (i64 i = 1; i < n; i++) {
+        for (i64 j = i; j > 0; j--) {
+            if (a[j] < a[j - 1]) {
+                i64 t = a[j];
+                a[j] = a[j - 1];
+                a[j - 1] = t;
+            }
+        }
+        if (cmp(a, b, n)) {
+            i++;
+            for (i64 j = i; j > 0; j--) {
+                if (a[j] < a[j - 1]) {
+                    i64 t = a[j];
+                    a[j] = a[j - 1];
+                    a[j - 1] = t;
+                }
+            }
+            printf("Insertion Sort\n");
+            for (i64 i = 0; i < n - 1; i++) {
+                printf("%lld ", a[i]);
+            }
+            printf("%lld\n", a[n - 1]);
+            return;
+        }
     }
-    sort(a, a + n);
-    for (i64 i = 0; i < n; i++) {
-        i64 loc = upper_bound(a, a + n, a[i] * p) - a;
-        ans = max(ans, loc - i);
+    for (i64 d = 2; d < n; d <<= 1) {
+        for (i64 i = 0, j = i + d; i < n; i = j, j = j + d) {
+            sort(c + i, c + min(j, n));
+        }
+        if (cmp(b, c, n)) {
+            d <<= 1;
+            for (i64 i = 0, j = i + d; i < n; i = j, j = j + d) {
+                sort(c + i, c + min(j, n));
+            }  
+            printf("Merge Sort\n");
+            for (i64 i = 0; i < n - 1; i++) {
+                printf("%lld ", c[i]);
+            }
+            printf("%lld\n", c[n - 1]);
+            return;
+        }
     }
-    cout << ans << endl;
+    
 }
 signed main() {
     solve();
