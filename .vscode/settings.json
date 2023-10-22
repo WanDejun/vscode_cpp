@@ -6,7 +6,17 @@
         "complex": "cpp",
         "*.tcc": "cpp",
         "random": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "chrono": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "set": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "limits": "cpp",
+        "system_error": "cpp",
+        "regex": "cpp",
+        "array": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
