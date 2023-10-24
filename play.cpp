@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <windows.h>
+#include <bits/stdc++.h>
+using namespace std;
 
 int main()
 {
@@ -35,4 +35,5 @@ int main()
         printf("%f\n",yuebin[i].junjia);
     }
 	system("pause");
+    less<i64>
 }
