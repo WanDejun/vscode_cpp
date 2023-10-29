@@ -25,30 +25,39 @@ void init() {
     }
 }
 void solve() {
-    i64 n, m, t, ans = 0;
+    i64 n, m, t, ans = 0, loc, cnt_pre = 0;
+    bool flag = 0;
     scanf("%s%s", &l, &r); getchar();
 	n = strlen(l); m = strlen(r), t = m - n;
+    loc = m - 1;
+    for (i64 i = 0; i < n; i++) if (l[i] != r[i]) {loc = i; break;}
     init();
     for (i64 i = m; i >= t; i--) { 
         l[i] = l[i - t];
     }
-    t = 0;
-    for (i64 i = 0; i < m; i++) { // st
-        if (l[i] == '0') continue;
+    for (i64 i = 0; i < loc; i++) {
+        (cnt_pre += l[i] - '0') %= 10;
+    }
+
+    (t = cnt_pre + l[loc] - '0') %= 10;
+    for (i64 i = loc + 1; i < m; i++) { // st
+        if (i < (m - n)) continue;
         for (i64 j = l[i] - '0' + 1; j < 10; j++) {
-            (ans += dp[m - i - 1][(20 - t - j) % 10]) %= MOD;
+            if (m - i - 1 == 0) (ans += ((t + j) % 10 == 0 ? 1 : 0)) %= MOD;
+            else (ans += dp[m - i - 1][(20 - t - j) % 10]) %= MOD;
         }
         (t += (l[i] - '0')) %= 10;
     }
     
-    t = 0;
-    for (i64 i = 0; i < m; i++) { // ed
+    t = cnt_pre + r[loc] - '0';
+    for (i64 i = loc + 1; i < m; i++) { // ed
         for (i64 j = 1; j < r[i] - '0'; j++) {
-            (ans += dp[m - i - 1][(20 - t - j) % 10]) %= MOD;
+            if (m - i - 1 == 0) (ans += ((t + j) % 10 == 0 ? 1 : 0)) %= MOD;
+            else (ans += dp[m - i - 1][(20 - t - j) % 10]) %= MOD;
         }
         (t += (r[i] - '0')) %= 10;
     }
-    for (i64 i = l[0] - '0' + 1; i < r[0] - '0'; i++) (ans += dp[m - 1][(10 - i) % 10]) %= MOD;
+    for (i64 i = l[loc] - '0' + 1; i < r[loc] - '0'; i++) (ans += dp[m - loc][(20 - cnt_pre - i) % 10]) %= MOD;
 	printf("%lld\n", ans);
 }
 
