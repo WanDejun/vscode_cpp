@@ -6,9 +6,11 @@
 #include <conio.h>
 
 #define LENGTH 25
-#define SLEEP_TIME 100 //难度
+//#define SLEEP_TIME 100 //难度
 #define BODY 1
 #define CANDY 2
+
+int SLEEP_TIME; //难度
 
 HANDLE hOutput, hOutBuf;//控制台屏幕缓冲区句柄
 COORD coord = { 0,0 };
@@ -145,7 +147,10 @@ void getkey() {
             if (key_status != 2 || score == 1) key_status = 3;
             break;
         case 27:
-            system("pause");
+            while (!_kbhit()) {
+                Sleep(100);
+            }
+            getkey();
             break;
         default:
             break;
@@ -183,12 +188,12 @@ void move_snake() {
         score++;
     }
     else {
+        mx_flag[snake_Tail.x][snake_Tail.y] = 0;
         xx = mx_pre[snake_Tail.x][snake_Tail.y].x; //修改尾
         yy = mx_pre[snake_Tail.x][snake_Tail.y].y;
 
         snake_Tail.x = xx;
         snake_Tail.y = yy;
-        mx_flag[xx][yy] = 0;
     }
 }
 
@@ -219,6 +224,26 @@ void output_die() {
 }
 
 void game_start() {
+    printf("choose your difficult level:\n1.easy\n2.middle\n3.hard\n>> ");
+    int t;
+    scanf("%d", &t);
+    switch (t) {
+    case 1:
+        SLEEP_TIME = 500;
+        break;
+    case 2:
+        SLEEP_TIME = 300;
+        break;
+    case 3:
+        SLEEP_TIME = 100;
+        break;
+    default:
+        printf("error!");
+        Sleep(1000);
+        exit(1);
+        break;
+    }
+
     fill_in_data();
     show();
     system("pause");

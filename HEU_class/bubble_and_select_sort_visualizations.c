@@ -54,6 +54,7 @@ int main() {
 	int nums1[N], nums2[N];
 
     system("chcp 437");
+	system("cls");
 	srand(time(0));
 
 	for (int i = 0; i < N; i++) {
