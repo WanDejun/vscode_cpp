@@ -18,7 +18,11 @@
         "regex": "cpp",
         "array": "cpp",
         "string": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "cinttypes": "cpp",
+        "numeric": "cpp",
+        "ratio": "cpp",
+        "cstdlib": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
