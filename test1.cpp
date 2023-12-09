@@ -1,58 +1,73 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <Windows.h>
-#include <time.h>
-#include <conio.h>
-#define LENGTH 15
-HANDLE hOutput, hOutBuf;//控制台屏幕缓冲区句柄
-COORD coord = { 0,0 };
-//双缓冲处理显示
-DWORD bytes = 0;
-char a[LENGTH + 1] = "---------------", b[LENGTH + 1] = "***************";
-bool buf_flag = 0;
+#include <graphics.h>
 
-void show() {
-    int i, j;
-    HANDLE *p = &hOutBuf;
-    char *s = a;
-    if (buf_flag) {p = &hOutput;s = b;}
-    for (i = 0; i < LENGTH; i++) {
-        coord.Y = i;
-        WriteConsoleOutputCharacterA(*p, s, LENGTH, coord, &bytes);
-    }
-    SetConsoleActiveScreenBuffer(*p);
+typedef struct {
+	double x, y;
+	int x_size, y_size;
+	color_t color;
+} Rect;
 
-    printf("123");
-    
-    Sleep(1000);
-    buf_flag = !buf_flag;
+static void RectShow(Rect rect) {
+	setfillcolor(rect.color);
+
+	ege_fillrect(float(rect.x), float(rect.y), float(rect.x_size), float(rect.y_size));
 }
 
 int main() {
-    //创建新的控制台缓冲区
-    hOutBuf = CreateConsoleScreenBuffer(
-        GENERIC_WRITE,//定义进程可以往缓冲区写数据
-        FILE_SHARE_WRITE,//定义缓冲区可共享写权限
-        NULL,
-        CONSOLE_TEXTMODE_BUFFER,
-        NULL
-    );
-    hOutput = CreateConsoleScreenBuffer(
-        GENERIC_WRITE,//定义进程可以往缓冲区写数据
-        FILE_SHARE_WRITE,//定义缓冲区可共享写权限
-        NULL,
-        CONSOLE_TEXTMODE_BUFFER,
-        NULL
-    );
-    //隐藏两个缓冲区的光标
-    CONSOLE_CURSOR_INFO cci;
-    cci.bVisible = 0;
-    cci.dwSize = 1;
-    SetConsoleCursorInfo(hOutput, &cci);
-    SetConsoleCursorInfo(hOutBuf, &cci);
-    while (1)
-    {
-        show();
-    }
+	initgraph(1280, 720);
+	setbkcolor(EGEARGB(255, 0xff, 0xff, 0xff));
+
+	Rect rect{ 615, 335, 50, 50 }; rect.color = EGEARGB(192, 121, 236, 213);
+	Rect rect_bk{ random(1000), random(600), 50, 50 }; rect_bk.color = EGEACOLOR(192, RED);
+
+	key_msg msg;
+
+	double speed = 2.5;
+	double dx = 0, dy = 0, dx_bk = speed, dy_bk = speed;
+
+	RectShow(rect);
+
+	for (; is_run(); delay_fps(60)) {
+		msg = { 0 };
+		cleardevice();
+
+		if (rect_bk.x >= 1255 || rect_bk.x <= 25) dx_bk = -dx_bk;
+		if (rect_bk.y >= 695 || rect_bk.y <= 25) dy_bk = -dy_bk;
+		rect_bk.x += dx_bk; rect_bk.y += dy_bk;
+
+		if (kbmsg()) {
+			msg = getkey();
+
+			switch (msg.key) {
+			case 119: //w
+				if (msg.msg == key_msg_char)
+					dy = -speed;
+				dx = 0;
+				break;
+			case 97: //a
+				if (msg.msg == key_msg_char)
+					dx = -speed;
+				dy = 0;
+				break;
+			case 115: //s
+				if (msg.msg == key_msg_char)
+					dy = speed;
+				dx = 0;
+				break;
+			case 100: //d
+				if (msg.msg == key_msg_char)
+					dx = speed;
+				dy = 0;
+				break;
+			default:
+				break;
+			}
+			rect.x += dx; rect.y += dy;
+		}
+
+		RectShow(rect);
+		RectShow(rect_bk);
+	}
+
+	closegraph();
+	return 0;
 }

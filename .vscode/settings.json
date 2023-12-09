@@ -22,7 +22,8 @@
         "cinttypes": "cpp",
         "numeric": "cpp",
         "ratio": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "format": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
