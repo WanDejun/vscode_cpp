@@ -23,7 +23,8 @@
         "numeric": "cpp",
         "ratio": "cpp",
         "cstdlib": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "unordered_map": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
