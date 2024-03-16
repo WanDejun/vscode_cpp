@@ -17,10 +17,21 @@ void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
     scanf("%lld", &n); getchar();
 	for (i64 i = 0; i < n; i++) {
-		
+		scanf("%lld", a + i);
+	}
+	sort(a, a + n);
+	i64 mini = a[0]; ans += ((mini * (n - 1)) << 1);
+	for (i64 i = 1; i < n ;i ++) {
+		if (a[i] >= (mini << 1)) {
+			ans += (mini << 1) * (n - i) * max(n - i - 1, 0ll);
+			break;
+		}
+		else {
+			ans += ((a[i] * (n - 1 - i)) << 1);
+		}
 	}
 	
-	printf("%lld\n", ans);
+	printf("%lld\n", ans << 1);
 }
 
 int main() {

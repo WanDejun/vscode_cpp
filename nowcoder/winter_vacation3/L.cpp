@@ -11,21 +11,26 @@ using namespace std;
 
 const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
-i64 a[N], b[N];
 
 void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
+	map<i64, i64> M; 
     scanf("%lld", &n); getchar();
 	for (i64 i = 0; i < n; i++) {
-		
+		scanf("%lld", &t);
+		M[t]++;
 	}
-	
+
+	if (M.find(3) != M.end() && M.find(6) != M.end()) ans += M[3] * M[6];
+	if (M.find(10) != M.end() && M.find(8) != M.end()) ans += M[10] * M[8];
+	if (M.find(7) != M.end() && M.find(2) != M.end()) ans += M[7] * M[2];
+
 	printf("%lld\n", ans);
 }
 
 int main() {
 	i64 _ = 1;
-	scanf("%lld", &_); getchar();
+	// scanf("%lld", &_); getchar();
 	for (i64 __ = 0; __ < _; __++) {
 		solve();
 	}

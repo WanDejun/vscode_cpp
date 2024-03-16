@@ -17,15 +17,16 @@ void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
     scanf("%lld", &n); getchar();
 	for (i64 i = 0; i < n; i++) {
-		
+		scanf("%lld", &t);
+		if (t == 1) cnt++;
 	}
 	
-	printf("%lld\n", ans);
+	printf("%lld\n", n - cnt);
 }
 
 int main() {
 	i64 _ = 1;
-	scanf("%lld", &_); getchar();
+	// scanf("%lld", &_); getchar();
 	for (i64 __ = 0; __ < _; __++) {
 		solve();
 	}

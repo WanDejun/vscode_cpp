@@ -16,9 +16,10 @@ i64 a[N], b[N];
 void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
     scanf("%lld", &n); getchar();
-	for (i64 i = 0; i < n; i++) {
-		
-	}
+    ans = n / 6;
+	if (n % 6) {
+        ans = (ans << 1);
+    }
 	
 	printf("%lld\n", ans);
 }

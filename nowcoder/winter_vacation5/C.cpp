@@ -14,18 +14,29 @@ const i64 MOD = 998244353;
 i64 a[N], b[N];
 
 void solve() {
-    i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
+    i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0, pre, nxt;
     scanf("%lld", &n); getchar();
-	for (i64 i = 0; i < n; i++) {
-		
+
+	scanf("%lld", &pre);
+	cnt = pre - 1;
+	ans += cnt;
+
+	for (i64 i = 1; i < n; i++) {
+		scanf("%lld", &nxt);
+		cnt = max(0ll, min(pre - 1 - cnt, nxt - 1));
+		ans += cnt;
+		pre = nxt;
 	}
+
+	cnt = max(0ll, nxt - 1 - cnt);
+	ans += cnt;
 	
 	printf("%lld\n", ans);
 }
 
 int main() {
 	i64 _ = 1;
-	scanf("%lld", &_); getchar();
+	// scanf("%lld", &_); getchar();
 	for (i64 __ = 0; __ < _; __++) {
 		solve();
 	}

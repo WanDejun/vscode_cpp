@@ -2,12 +2,12 @@
     "configurations": [
         {
             "name": "Win32",
-            "includePath": [                
+            "includePath": [    
+                "${workspaceFolder}/**",            
                 "C:\\Program Files\\x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1\\mingw64\\include",
                 "C:\\Program Files\\x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1\\mingw64\\x86_64-w64-mingw32\\include",
                 "C:\\Program Files\\x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\13.2.0\\include",
-                "C:\\Program Files\\x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\13.2.0\\include\\c++",
-                "${workspaceFolder}/**"
+                "C:\\Program Files\\x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\13.2.0\\include\\c++"
             ],
             "defines": [
                 "_DEBUG",
@@ -15,8 +15,8 @@
                 "_UNICODE"
             ],
             "compilerPath": "C:/Program Files/x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1/mingw64/bin/g++.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++23",
+            "cStandard": "c11",
+            "cppStandard": "c++20",
             "intelliSenseMode": "gcc-x64"
         }
     ],

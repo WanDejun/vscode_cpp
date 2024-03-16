@@ -11,15 +11,22 @@ using namespace std;
 
 const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
-i64 a[N], b[N];
+
+set<i64> S1({29,30,31,32}), S2({34,36,38,40});
 
 void solve() {
-    i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
-    scanf("%lld", &n); getchar();
-	for (i64 i = 0; i < n; i++) {
-		
-	}
+    i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0, a, b, c;
+    scanf("%lld%lld%lld", &a, &b, &c); getchar();
+	ans += (a - 100) / 50;
+	if (S1.find(b) != S1.end()) ans += 0;
+	else if (S2.find(b) != S2.end()) ans += 1;
+	else ans += 2;
+
 	
+	if (S1.find(c) != S1.end()) ans += 0;
+	else if (S2.find(c) != S2.end()) ans += 1;
+	else ans += 2;
+
 	printf("%lld\n", ans);
 }
 

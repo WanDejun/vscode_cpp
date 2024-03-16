@@ -12,19 +12,32 @@ using namespace std;
 const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
 i64 a[N], b[N];
+i64 dp[1060];
+const i64 w[5] = {1, 3, 6, 10, 15};
+
+void pre() {
+	for (i64 i = 0; i <= 1060; i++) {
+		dp[i] = i;
+	}
+
+	for (i64 i = 1; i < 5; i++) {
+		for (i64 j = w[i]; j <= 1060; j++) {
+			dp[j] = min(dp[j], dp[j - w[i]] + 1);
+		}
+	}
+}
 
 void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
     scanf("%lld", &n); getchar();
-	for (i64 i = 0; i < n; i++) {
-		
-	}
-	
-	printf("%lld\n", ans);
+	cnt += (n - 900 > 0 ? n - 900 : 0) / 15;
+	t = n > 900 ? 900 + (n - 900) % 15 : n;
+	printf("%lld\n", cnt + dp[t]);
 }
 
 int main() {
 	i64 _ = 1;
+	pre();
 	scanf("%lld", &_); getchar();
 	for (i64 __ = 0; __ < _; __++) {
 		solve();

@@ -15,12 +15,10 @@ i64 a[N], b[N];
 
 void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
-    scanf("%lld", &n); getchar();
-	for (i64 i = 0; i < n; i++) {
-		
-	}
-	
-	printf("%lld\n", ans);
+    string a, b;
+	cin >> a >> b;
+	if ((a[0] | 32) == (b[0] | 32)) cout << "Yes" << endl;
+	else cout << "No" << endl;
 }
 
 int main() {

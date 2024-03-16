@@ -14,18 +14,28 @@ const i64 MOD = 998244353;
 i64 a[N], b[N];
 
 void solve() {
-    i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
-    scanf("%lld", &n); getchar();
+    i64 n = 0, m = 0, q = 0, t = 0, ans = 0, cnt = 0;
+    scanf("%lld%lld%lld", &n, &q, &t); getchar();
 	for (i64 i = 0; i < n; i++) {
-		
+		scanf("%lld", a + i);
 	}
+    sort(a, a + n);
+    for (i64 i = 0; i < n; i++) {
+        a[i] += a[i - 1];
+    }
+
+    for (i64 i = 0; i < q; i++) {
+        scanf("%lld", &m);
+        m /= t;
+        printf("%lld\n", (n - 1 - m >= 0 ?  a[n - 1 - m] : 0ll) + t);
+    }
 	
 	printf("%lld\n", ans);
 }
 
 int main() {
 	i64 _ = 1;
-	scanf("%lld", &_); getchar();
+	// scanf("%lld", &_); getchar();
 	for (i64 __ = 0; __ < _; __++) {
 		solve();
 	}

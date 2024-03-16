@@ -11,16 +11,20 @@ using namespace std;
 
 const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
-i64 a[N], b[N];
-
+char a[N];
+const string str1 = "DFS", str2 = "dfs";
 void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
+    i64 state1 = 0, state2 = 0;
+
     scanf("%lld", &n); getchar();
-	for (i64 i = 0; i < n; i++) {
-		
-	}
+	scanf("%s", a);
+    for (i64 i = 0; i < n; i++) {
+        if (a[i] == str1[state1]) state1++;
+        if (a[i] == str2[state2]) state2++;
+    }
 	
-	printf("%lld\n", ans);
+	printf("%d %d\n", state1 == 3 ? 1 : 0, state2 == 3 ? 1 : 0);
 }
 
 int main() {

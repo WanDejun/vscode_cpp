@@ -92,5 +92,8 @@
         "valarray": "cpp",
         "variant": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "C_Cpp.autocompleteAddParentheses": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }

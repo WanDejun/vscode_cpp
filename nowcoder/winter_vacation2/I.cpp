@@ -17,10 +17,14 @@ void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
     scanf("%lld", &n); getchar();
 	for (i64 i = 0; i < n; i++) {
-		
+		scanf("%lld", a + i);
+	}
+	sort(a, a + n);
+	for (i64 i = 1; i < n ;i ++) {
+		ans += i * a[i];
 	}
 	
-	printf("%lld\n", ans);
+	printf("%lld\n", ans << 2);
 }
 
 int main() {

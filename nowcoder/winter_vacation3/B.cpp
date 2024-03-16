@@ -15,12 +15,19 @@ i64 a[N], b[N];
 
 void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
+	bool flag = 0;
     scanf("%lld", &n); getchar();
 	for (i64 i = 0; i < n; i++) {
-		
+		scanf("%lld", a + i);
+		a[i] %= 2;
 	}
-	
-	printf("%lld\n", ans);
+	if (n == 1) {printf("zn\n"); return;}
+
+	for (i64 i = 1; i < n; i++) {
+		if (a[i] != a[i - 1]) cnt++;
+	} 
+	if (a[n - 1] != a[0]) cnt++;
+	printf("%s\n", n % 2 ? "qcjj" : "zn");
 }
 
 int main() {

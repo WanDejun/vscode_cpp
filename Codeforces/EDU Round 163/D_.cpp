@@ -11,13 +11,26 @@ using namespace std;
 
 const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
-i64 a[N], b[N];
 
 void solve() {
     i64 n = 0, m = 0, t = 0, ans = 0, cnt = 0;
-    scanf("%lld", &n); getchar();
-	for (i64 i = 0; i < n; i++) {
-		
+    string s;
+    cin >> s;
+    n = s.length();
+	for (i64 len = 1; len <= n / 2; len++) {
+		i64 t = 0;
+        for (i64 i = 0; i + len < n; i++) {
+            if (s[i] == s[i + len] || s[i] == '?' || s[i + len] == '?') {
+                t++;
+                if (t == len) {
+                    ans = len << 1;
+                    break;
+                }
+            }
+            else {
+                t = 0;
+            }
+        }
 	}
 	
 	printf("%lld\n", ans);
