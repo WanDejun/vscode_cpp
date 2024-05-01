@@ -90,10 +90,12 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "climits": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "editor.suggestSelection": "recentlyUsedByPrefix",
     "C_Cpp.autocompleteAddParentheses": true,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "C_Cpp.default.compilerPath": "C:\\Program Files\\x86_64-13.2.0-release-posix-seh-ucrt-rt_v11-rev1\\mingw64\\bin\\g++.exe",
 }

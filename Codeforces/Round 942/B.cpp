@@ -11,23 +11,27 @@ using namespace std;
 
 const i64 N = 2e5 + 5;
 const i64 MOD = 998244353;
-i64       a[N], b[N];
+char a[N];
 
 void solve() {
     i64 n = 0, k, m = 0, t = 0, ans = 0, cnt = 0;
-    scanf("%lld", &n);
-    getchar();
-    for (i64 i = 0; i < n; i++) {}
+    scanf("%lld", &n); getchar();
+	for (i64 i = 0; i < n; i++) {
+		t = getchar();
+		if (t == 'U') cnt++;
+	}
 
-    printf("%lld\n", ans);
+	if (cnt % 2) printf("YES\n");
+	else printf("NO\n");
 }
 
 int main() {
-    i64 _ = 1;
-    scanf("%lld", &_);
-    getchar();
-    for (i64 __ = 0; __ < _; __++) solve();
-    system("pause");
+	i64 _ = 1;
+	scanf("%lld", &_); getchar();
+	for (i64 __ = 0; __ < _; __++) {
+		solve();
+	}
+	system("pause");
 
-    return 0;
+	return 0;
 }
